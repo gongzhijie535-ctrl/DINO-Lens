@@ -1,8 +1,10 @@
-[English](README.md) | [简体中文](README_zh.md)
-
 # 🦖 DINO-Lens: Visual Feature Explorer & Segmenter
 
 <div align="center">
+
+**[English](README.md) | [简体中文](README_zh.md)**
+
+<br/>
 
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)](https://pytorch.org/)
 [![DINOv3](https://img.shields.io/badge/Model-DINOv3-blue?style=for-the-badge)](https://github.com/facebookresearch/dinov3)
