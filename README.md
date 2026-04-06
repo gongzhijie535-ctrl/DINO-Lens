@@ -16,7 +16,8 @@
 
 > **💡 提示：** 建议使用 ScreenToGif 等工具录制一张操作动图，展示打开图片、点击生成热力图和 PCA 语义图的全过程，并替换下方的占位图。
 
-![Demo GIF Placeholder](https://via.placeholder.com/800x400.png?text=Your+Awesome+Demo+GIF+Here)
+![Demo](demo.gif)
+
 
 ---
 
