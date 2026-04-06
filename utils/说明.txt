@@ -1,0 +1,7 @@
+utils/file_utils.py
+职责：文件系统相关的工具函数
+- scan_folder()     扫描指定文件夹，返回所有图片路径的排序列表
+                    （过滤条件来自 core/config.py 的 IMG_EXTS）
+- add_to_history()  向历史记录插入新路径，自动去重 + 限制最大条数
+                    （上限来自 core/config.py 的 HISTORY_MAX）
+不应该放：UI操作、模型调用、图像处理

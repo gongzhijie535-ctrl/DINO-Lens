@@ -1,0 +1,33 @@
+core/config.py
+职责：全局常量配置，整个项目唯一的"配置中心"
+- 模型路径       REPO_DIR / WEIGHTS（DINOv3本体）
+- 分割头路径     CLF_PATH / SCALER_PATH
+- 图像处理参数   PATCH_SIZE / IMAGE_SIZE / IMAGENET_MEAN / IMAGENET_STD
+- 文件过滤       IMG_EXTS（支持的图片后缀）
+- 历史记录上限   HISTORY_MAX
+- 色彩映射表     COLORMAPS（名称 → OpenCV colormap常量）
+不应该放：任何逻辑代码，只放常量
+
+core/model.py
+职责：模型的加载与所有推理计算，是整个项目的算法核心
+- 模型单例管理
+    _model / _clf / _scaler   三个全局单例，只初始化一次
+    load_model()              启动时调用，同时加载DINOv3 + 分割头
+    is_model_ready()          检查DINOv3是否就绪
+    is_seg_ready()            检查分割头是否就绪
+
+- 特征提取
+    load_and_extract()        读图 → 缩放对齐patch网格 → 归一化 → 推理
+                              返回 (img_resized, tokens_normed,
+                                    patch_tokens_raw, h, w, orig_w, orig_h)
+
+- 前景分割
+    predict_fg_mask()         用分割头对每个patch预测前景概率
+                              返回 prob_map[h,w] 和 mask_binary[h,w]
+
+- 可视化计算
+    sim_to_heatmap()          相似度图[-1,1] → uint8 → OpenCV热力图(BGR)
+    compute_pca_rgb()         patch特征 → PCA降维3维 → RGB图
+                              支持 fg_mask 参数，前景PCA/全图PCA自动切换
+
+不应该放：UI操作、文件扫描、tkinter变量

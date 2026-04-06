@@ -1,0 +1,70 @@
+ui/app.py
+职责：应用主类，持有所有共享状态
+- 所有 tk.Variable 的定义（~20个）
+- 所有数据状态的初始化（tokens、patches等）
+- 组装 menubar / canvas / control_panel
+- 所有事件回调（_on_xxx）
+- 按钮功能（打开/保存/收藏等）
+- 代理方法（_refresh_left → render.refresh_left）
+不应该放：具体的渲染逻辑、计算逻辑、UI控件构建
+
+ui/panels/canvas_panel.py
+职责：构建左右两个图像画布
+- 左图画布（canvas_left）+ LabelFrame
+- 右图画布（canvas_right）+ LabelFrame
+- 绑定点击和resize事件
+不应该放：画布内容的绘制（那是 render.py 的事）
+
+ui/panels/control_panel.py
+职责：构建右侧整个控制区的框架和内容
+- 可滚动容器的搭建
+- 图像信息区（lbl_filename 等标签）
+- 提取参数区（SCALE选择、重新提取按钮）
+- 通用显示区（网格线开关、色彩映射）
+- 三个功能 Tab 的容器（调用 tab_xxx.build）
+- 历史记录 / 收藏列表
+不应该放：Tab 内部的控件（各自在 tabs/ 里）
+
+ui/tabs/tab_similarity.py
+职责：相似度页的所有控件
+- 热力图叠加原图开关 + 透明度滑条
+- 阈值遮罩开关 + 滑条
+- Top-K 高亮开关 + 数量输入
+- 多点平均模式开关 + 清除按钮
+不应该放：相似度的计算逻辑（那是 compute.py 的事）
+
+ui/tabs/tab_pca.py
+职责：PCA页的所有控件
+- PCA图叠加原图开关 + 透明度滑条
+- 前景PCA开关 + 前景阈值滑条
+- 分割头状态标签（lbl_pca_fg_status）
+不应该放：PCA降维的计算（那是 compute.py 的事）
+
+ui/tabs/tab_fg.py
+职责：前景页的所有控件
+- 概率图叠加原图开关 + 透明度滑条
+- 色彩映射选择
+- 二值化阈值滑条
+- 左图叠加前景遮罩开关
+- 前景统计标签（占比、patch数）
+不应该放：前景概率的预测逻辑（那是 core/model.py 的事）
+
+ui/logic/compute.py
+职责：特征计算
+- compute_sim()   计算单点或多点平均的余弦相似度图
+- get_pca_rgb()   计算PCA降维RGB图（含缓存逻辑）
+不应该放：UI控件操作、渲染、图片加载
+
+ui/logic/render.py
+职责：把数据画到画布上
+- fit_to_canvas()   把图像缩放适配到画布尺寸
+- refresh_left()    刷新左图（网格线、选中框、多点框、前景遮罩）
+- refresh_right()   刷新右图（相似度/PCA/前景三种模式）
+不应该放：计算逻辑、UI控件构建
+
+ui/logic/image_loader.py
+职责：图片加载的完整流程
+- load_image()        启动子线程加载图片
+- on_extract_done()   加载成功后更新所有状态和UI
+- on_extract_error()  加载失败后显示错误
+不应该放：渲染逻辑（加载完成后调用render，但不自己画）
