@@ -100,5 +100,18 @@ dinov3\_test/
 
 \- 权重文件请从 Meta AI 官方渠道下载
 
+## 权重下载
+
+DINOv3 官方权重请从 Meta AI 下载：
+https://dl.fbaipublicfiles.com/dinov2/dinov2_vitb14/dinov2_vitb14_pretrain.pth
+
+下载后命名为 `dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth`，放入 `dinov3/weights/`
+
+## 分类器下载
+
+clf.pkl 和 scaler.pkl 请从 Releases 下载：
+https://github.com/gongzhijie535-ctrl/dinov3_test/releases/tag/v1.0
+
+下载后放入 `checkpoints/`
 
 
