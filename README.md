@@ -121,6 +121,14 @@ python main.py
 
 ---
 
+## 🤔 Why Build This? (Motivation)
+
+While DINOv3 possesses undeniably powerful feature extraction capabilities, it lacks an intuitive, interactive GUI out of the box. Many researchers and developers might find it challenging to directly "feel" its power or know how to operate it just by looking at raw model weights and code.
+
+Therefore, I built this **out-of-the-box visual and interactive interface**. The goal is simple: **to break down the coding barriers, allowing anyone to explore, validate, and utilize the powerful underlying visual features of DINOv3 with zero barrier to entry—just a few mouse clicks.**
+
+---
+
 ## 📅 Roadmap
 
 This project will be continuously maintained and updated, aiming to build the best visual foundation model feature exploration tool.
