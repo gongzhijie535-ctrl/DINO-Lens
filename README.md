@@ -1,4 +1,4 @@
-# 🦖 DINO-Lens: Visual Feature Explorer & Segmenter
+# 🦖 DINO-Lens: Interactive GUI for DINOv3 Feature Visualization & Segmentation
 
 <div align="center">
 
