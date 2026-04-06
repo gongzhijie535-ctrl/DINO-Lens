@@ -5,8 +5,17 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)](https://pytorch.org/)
 [![DINOv3](https://img.shields.io/badge/Model-DINOv3-blue?style=for-the-badge)](https://github.com/facebookresearch/dinov3)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Status](https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge)]()
+
+<br/>
 
 **基于 DINOv3 的轻量级、交互式视觉特征分析与少样本分割工具**
+
+<br/>
+
+*一个让你真正"看见" Vision Foundation Model 在想什么的工具。*
+
+> 🚧 **本项目持续迭代中** — 更多功能正在开发，欢迎 Star 关注进度！
 
 </div>
 
@@ -18,7 +27,20 @@
 
 ![Demo](demo.gif)
 
+*左键点击 → 实时余弦相似度热力图 ｜ PCA 语义可视化 ｜ 10张图训练的前景分割*
+
 </div>
+
+---
+
+## 💡 项目亮点 (Highlights)
+
+> 这不只是一个可视化工具——它是一个关于 **"强大特征究竟能做什么"** 的实验。
+>
+> 本项目的前景分割头是一个**仅有一层的超轻量逻辑回归模型**，训练数据**仅仅 10 张图片**。
+> 没有微调，没有复杂架构，却能实现高质量的前景提取。
+>
+> **这不是分类器的功劳，这是 DINOv3 特征本身的力量。**
 
 ---
 
@@ -28,8 +50,8 @@
 
 - **🖱️ 交互式相似度分析：** 鼠标点击原图任意位置，实时渲染 DINOv3 提取的余弦相似度热力图，支持右键"多点平均"特征提取。
 - **🧠 实时 PCA 语义可视化：** 将高维 Patch Token 降维至 RGB 空间，直观展示模型对图像语义的无监督聚类能力（支持仅对前景进行 PCA）。
-- **🎭 轻量级前景分割：** 结合预训练的逻辑回归分类器，无需微调 DINOv3 庞大的参数，即可实现高质量的零样本/少样本前景提取。
-- **⚡ 高效推理架构：** 采用多线程异步加载与特征缓存机制，确保 GUI 交互丝滑不卡顿。
+- **🎭 极简且强大的前景分割：** 单层逻辑回归 + 10 张训练图，零微调实现高质量少样本前景提取，直接验证 DINOv3 特征的语义表征上限。
+- **⚡ 高效推理架构：** 多线程异步加载与特征缓存机制，确保 GUI 交互丝滑不卡顿。
 
 ---
 
@@ -67,7 +89,7 @@ dinov3/weights/dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth
 
 ### 3. 下载分割分类器（可选）
 
-为启用前景分割功能，需下载预训练的轻量级分类器：
+为启用前景分割功能，需下载预训练的极简分类器（单层逻辑回归，仅用 10 张图训练）：
 
 👉 [GitHub Releases v1.0](https://github.com/gongzhijie535-ctrl/DINO-Lens/releases/tag/v1.0)
 
@@ -93,6 +115,19 @@ python main.py
 1. 点击左上角 **"打开图片"** 加载本地图像。
 2. 在左侧原图区域，**左键单击** 选择主特征点，**右键单击** 添加多个特征点（用于多点平均）。
 3. 在右侧控制面板切换 **相似度 / PCA / 前景** 模式，实时观察特征变化。
+
+---
+
+## 📅 未来规划 (Roadmap)
+
+本项目将持续维护并更新，致力于打造最好用的视觉大模型特征探索工具。
+
+- [ ] 引入更多下游任务的轻量级验证模块（如深度估计、边缘检测等）
+- [ ] 支持导入自定义的轻量级分类器权重
+- [ ] 进一步优化 GUI 交互体验，支持批量图像特征分析
+- [ ] 探索与其他视觉基础模型（如 SAM 等）的联动
+
+*(欢迎提交 Issue 或 Pull Request 参与共建！)*
 
 ---
 
