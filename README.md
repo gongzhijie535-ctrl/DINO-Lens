@@ -91,17 +91,21 @@ After downloading, rename the file and place it in the specified path:
 dinov3/weights/dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth
 ```
 
-### 3. Download Segmentation Classifier (Optional)
+### 3. Segmentation Classifier (Included)
 
-To enable the foreground segmentation feature, download our pre-trained minimalist classifier (trained on only 10 images):
+The pre-trained minimalist classifiers are **already included in this repository**:
+- **10-image version**: Trained on only 10 images
+- **300-image version**: Trained on 300 images for better performance
 
-👉 [GitHub Releases v1.0](https://github.com/gongzhijie535-ctrl/DINO-Lens/releases/tag/v1.0)
+No additional download required. After cloning, the models are ready to use:
 
-Place the downloaded files in the following paths:
-
+10-image model
 ```
-checkpoints/clf.pkl
-checkpoints/scaler.pkl
+checkpoints/clf.pklcheckpoints/scaler.pkl
+```
+300-image model
+```
+checkpoints_300/clf.pklcheckpoints_300/scaler.pkl
 ```
 
 ---
@@ -153,7 +157,8 @@ DINO-Lens/
 │   └── file_utils.py   # File scanning and history management
 ├── dinov3/             # Official DINOv3 source code (needs to be cloned)
 │   └── weights/        # Official .pth weights (added to .gitignore)
-├── checkpoints/        # clf.pkl and scaler.pkl (added to .gitignore)
+├── checkpoints/        # 10-image trained clf.pkl and scaler.pkl
+├── checkpoints_300/    # 300-image trained clf.pkl and scaler.pkl
 ├── main.py             # GUI main entry point
 └── requirements.txt    # Dependencies list
 ```
