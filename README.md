@@ -101,13 +101,11 @@ No additional download required. After cloning, the models are ready to use:
 
 10-image model
 ```
-checkpoints/clf.pkl
-checkpoints/scaler.pkl
+`checkpoints/clf.pkl`, `checkpoints/scaler.pkl`
 ```
 300-image model
 ```
-checkpoints_300/clf.pkl
-checkpoints_300/scaler.pkl
+`checkpoints_300/clf.pkl`, `checkpoints_300/scaler.pkl`
 ```
 
 ---
