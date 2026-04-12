@@ -101,11 +101,11 @@ dinov3/weights/dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth
 
 10 图模型
 ```
-checkpoints/clf.pklcheckpoints/scaler.pkl
+checkpoints/clf.pkl、checkpoints/scaler.pkl
 ```
 300 图模型
 ```
-checkpoints_300/clf.pklcheckpoints_300/scaler.pkl
+checkpoints_300/clf.pkl, checkpoints_300/scaler.pkl
 ```
 
 ---
